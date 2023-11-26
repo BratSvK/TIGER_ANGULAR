@@ -1,0 +1,16 @@
+.image-uploader {
+  width: 15rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 0.628rem;
+  border: 2.512px dashed #5542F5;
+  background: var(--white-100, #FFF);
+}
+
+.image-uploader p {
+  margin: 0;
+}

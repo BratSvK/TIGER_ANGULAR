@@ -24,7 +24,7 @@ registerLocaleData(localeSk);
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxSpinnerModule,
+    NgxSpinnerModule
   ],
   bootstrap: [AppComponent]
 })

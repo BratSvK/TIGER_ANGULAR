@@ -1,0 +1,9 @@
+<div class="image-uploader" (click)="openFileInput()">
+    <input id="fileInput" type="file" (change)="onFileSelected($event)" style="display: none;" />
+    <div class="row">
+      <fa-icon class="mb-2" [icon]="cloudIcon" size="2x"></fa-icon>
+    </div>
+    <div class="row">
+      <p>Výber tkaniva</p>
+    </div>
+</div>

@@ -4,21 +4,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
     {
-      path: 'detection',
-      loadChildren: () => import('./detection/detection.module').then(m => m.DetectionModule),
-    },
-    {
-      path: 'segmentation',
-      loadChildren: () => import('./segmentation/semgmentation.module').then(m => m.SegmentationModule),
+      path: '',
+      loadChildren: () => import('./tiger/tiger.module').then(m => m.TigerModule),
     },
     {
       path: 'not-found',
       component: NotFoundComponent
     },
-    // {
-    //   path: 'server-error',
-    //   component: ServerErrorComponent
-    // },
     {
       path: '**', component: NotFoundComponent,
       pathMatch: 'full'

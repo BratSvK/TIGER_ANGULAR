@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
-    selector: 'app-login',
+    selector: 'Segmentation',
     templateUrl: './segmentation.component.html',
     styleUrls: ['./segmentation.component.scss']
 })
