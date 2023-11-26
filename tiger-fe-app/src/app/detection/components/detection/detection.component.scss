@@ -1,3 +1,7 @@
+@import "../../../tiger/component/navbar/navbar.component.scss";
+
+$evenColorItem: #577CEF;
+
 .detection-content {
   display: flex;
   justify-content: center;
@@ -6,6 +10,12 @@
   padding: 4rem;
   height: 100%;
   width: 100%;
+
+  .result-content {
+    fa-icon#results {
+      color: $evenColorItem;
+    }
+  }
 }
 
 .grid-col-2 {
@@ -16,10 +26,15 @@
   grid-row: span 2;
 }
 
-.square {
-  border: 1px solid red;
-  height: 50px;
-  width: 50px;
+.image-box {
+  width: 15rem;
+  height: 15rem;
+  flex-shrink: 0;
+}
+
+.modal-header{
+  background: $home-color;
+  color: white;
 }
 
 .detection-analyses-grid {
@@ -79,7 +94,7 @@
 
     &:nth-child(even) {
       border-radius: 0.6875rem;
-      background: #577CEF;
+      background: $evenColorItem;
       color: white;
     }
 
@@ -120,6 +135,6 @@
 }
 
 
- fa-icon#results {
+fa-icon#results {
   cursor: pointer;
 }

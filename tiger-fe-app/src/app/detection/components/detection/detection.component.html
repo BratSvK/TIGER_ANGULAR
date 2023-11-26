@@ -84,20 +84,24 @@
 
 <ng-template #template>
     <div class="modal-header">
-        <h4 class="modal-title pull-left"></h4>
+        <h4 class="modal-title">Predikcia nálezov</h4>
             <button type="button" class="btn-close pull-right" (click)="modalRef.hide()">
                 <span class="icon-cross"></span>
             </button>
     </div>
     <div class="modal-body">
-        <label for="Name">Dátum ukončenia choroby</label>
-        <div type="text" class="form-control data font">Lorem ipsum</div>
-        <label for="Name">Symptómy sprevádzajúce chorobu</label>
-        <div type="text" class="form-control data font">Lorem ipsum</div>
-        <label for="Name">Chorobná skupina</label>
-        <div type="text" class="form-control data font">Lorem ipsum</div>
-        <label for="Name">Prídavné informácie o chorobe</label>
-        <div type="text" class="form-control data font">Lorem ipsum</div>
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="image-box">
+                    <img class="h-100" src="../../../../assets/prediction.png" alt="Prediction image">
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="image-box">
+                    <img class="h-100" src="../../../../assets/prediction.png" alt="Prediction image">
+                </div>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-close-footer pull-right" (click)="modalRef.hide()">
