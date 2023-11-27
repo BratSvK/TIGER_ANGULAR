@@ -10,6 +10,7 @@ import localeSk from '@angular/common/locales/sk';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ToastrModule } from 'ngx-toastr';
 
 registerLocaleData(localeSk);
 
@@ -24,7 +25,11 @@ registerLocaleData(localeSk);
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ToastrModule.forRoot({
+      timeOut: 888,
+      positionClass: 'toast-bottom-right'
+    }),
   ],
   bootstrap: [AppComponent]
 })

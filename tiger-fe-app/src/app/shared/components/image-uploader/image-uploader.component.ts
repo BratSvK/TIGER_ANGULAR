@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { faCloudUpload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,6 +7,7 @@ import { faCloudUpload } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './image-uploader.component.scss'
 })
 export class ImageUploaderComponent {
+  @Output() onUploadedTissue = new EventEmitter<File>();
   cloudIcon = faCloudUpload;
 
   openFileInput() {
@@ -17,8 +18,7 @@ export class ImageUploaderComponent {
   }
 
   onFileSelected(event: any) {
-    // Do something with the selected file, e.g., upload it
-    const selectedFile = event.target.files[0];
-    console.log('Selected File:', selectedFile);
+    const selectedFile: File = event.target.files[0];
+    this.onUploadedTissue.emit(selectedFile);
   }
 }

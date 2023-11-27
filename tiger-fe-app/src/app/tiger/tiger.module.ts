@@ -8,6 +8,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { ImageUploaderComponent } from '../shared/components/image-uploader/image-uploader.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DetectionService } from '../../services/detection.service';
 
 
 @NgModule({
@@ -23,6 +24,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     TigerRoutingModule,
     FontAwesomeModule,
     ModalModule.forRoot()
+  ],
+  providers: [
+    DetectionService
   ]
 })
 export class TigerModule { }
