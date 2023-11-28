@@ -18,12 +18,4 @@ export class DetectionService extends BaseService {
     formData.append('file', file);
     return this.http.post<DetectionResult>(this.baseUrl + `${DETECTION_API}/scan`, formData);
   }
-
-  getDetectionResult2$(file: File): Observable<DetectionResult> {
-    return this.http.get<DetectionResult>(this.baseUrl + `${DETECTION_API}/mock`);
-  }
-
-  getDetectionResultMock$(file: File): Observable<DetectionResult> {
-    return of(this.mockResult);
-  }
 }
