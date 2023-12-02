@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { BaseService } from './base.service';
-import { DETECTION_API } from '../app/constants/ApiRoutes';
-import { DetectionResult } from '../app/_models/personal-record.model';
+import { BaseService } from '../../../services/base.service';
+import { DETECTION_API } from '../../constants/ApiRoutes';
+import { DetectionResult } from '../../_models/personal-record.model';
 
 @Injectable()
 export class DetectionService extends BaseService {

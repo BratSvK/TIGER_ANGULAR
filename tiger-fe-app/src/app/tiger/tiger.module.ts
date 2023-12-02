@@ -8,7 +8,10 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { ImageUploaderComponent } from '../shared/components/image-uploader/image-uploader.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { DetectionService } from '../../services/detection.service';
+import { DetectionService } from '../detection/services/detection.service';
+import { FormsModule } from '@angular/forms';
+import { ConnectProcessComponent } from '../shared/components/connect-process/connect-process.component';
+import { SegmentationResultImgComponent } from '../shared/components/segmentation-result-img/segmentation-result-img.component';
 
 
 @NgModule({
@@ -17,12 +20,15 @@ import { DetectionService } from '../../services/detection.service';
     DetectionComponent,
     SegmentationComponent,
     NavbarComponent,
-    ImageUploaderComponent
+    ImageUploaderComponent,
+    ConnectProcessComponent,
+    SegmentationResultImgComponent
   ],
   imports: [
     CommonModule,
     TigerRoutingModule,
     FontAwesomeModule,
+    FormsModule,
     ModalModule.forRoot()
   ],
   providers: [

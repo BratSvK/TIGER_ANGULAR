@@ -1,9 +1,89 @@
+$content-color: #E3F5FF;
+$primary-color: #7857FF;
+$border-radius: var(--16, 1rem);
+$background-box: var(--primary-blue, $content-color);
+$pickBtn-default-color: $primary-color;
+
 .segmentation-content {
   display: flex;
-  justify-content: center;
+  align-items: center;
   height: 100vh;
   gap: 1rem;
-  padding: 4rem;
+  margin: 2rem 10rem 0rem 10rem;
   height: 100%;
   width: 100%;
+}
+
+.test-stvorec {
+  display: flex;
+  flex-direction: column;
+  height: 100%; // Výška štvorca
+  display: flex; // Použitie flexboxu na centrálne umiestnenie
+  justify-content: center; // Centrovanie podľa osi X
+  align-items: center; // Centrovanie podľa osi Y
+}
+
+hr {
+  width: 28.25006rem;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: 0.2rem dashed black;
+  opacity: 1;
+}
+
+.algo-pick-content {
+  display: flex;
+  width: 22rem;
+  height: 32rem;
+  flex-direction: column;
+  border-radius: 1.875rem;
+  background: linear-gradient(180deg, $primary-color 0%, #2E2BE9 100%);
+
+
+  .pick {
+    padding: 1rem;
+    color: black;
+    font-weight: bold;
+    border-radius: $border-radius;
+    background: $background-box;
+
+
+    .form-check-input {
+      background-color: $pickBtn-default-color;
+    }
+
+    .form-check-input:checked {
+      background-color: green;
+      border-color: green;
+    }
+  }
+
+  .algo-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    margin: 2rem;
+    color: white;
+
+
+    h5 {
+      font-weight: bolder;
+    }
+  }
+}
+
+.form-check-label {
+  font-size: 1.2rem;
+}
+
+.dice-result {
+  display: flex;
+  width: 15rem;
+  min-width: 8.68056rem;
+  flex-direction: column;
+
+  .row:last-of-type {
+    font-size: 1.8rem;
+    font-weight: bolder;
+  }
 }

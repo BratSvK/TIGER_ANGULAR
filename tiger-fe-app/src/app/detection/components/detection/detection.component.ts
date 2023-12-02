@@ -4,7 +4,7 @@ import { faSquarePollVertical } from '@fortawesome/free-solid-svg-icons';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable, catchError, map, of } from 'rxjs';
 import { DetectionResult } from '../../../_models/personal-record.model';
-import { DetectionService } from '../../../../services/detection.service';
+import { DetectionService } from '../../services/detection.service';
 import { SubSink } from 'subsink';
 import { ToastrService } from 'ngx-toastr';
 
