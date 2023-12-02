@@ -13,7 +13,6 @@ import { SubSink } from 'subsink';
 })
 export class SegmentationComponent implements OnInit, OnDestroy  {
     private subs = new SubSink();
-
     loading: boolean = false;
     selectedAlgoritm: Algorithm;
     segmentationAlgorithms: Algorithm[] = [
@@ -21,8 +20,6 @@ export class SegmentationComponent implements OnInit, OnDestroy  {
         new Algorithm(SegmentationTypeAlgo.FuzzyCMeans, 'Fuzzy C-Means'),
         new Algorithm(SegmentationTypeAlgo.ThresholdBased, 'Threshold-Based')
     ];
-    imageUrl1: string = 'url(../../../../assets/mock-segmentation-after.png)';
-    imageUrl2: string = 'url(../../../../assets/mock-segmentation-origin.png)';
     segmentedResult: SegmentationResult;
 
     constructor(
@@ -41,12 +38,6 @@ export class SegmentationComponent implements OnInit, OnDestroy  {
             segmentedPrediction: null,
             dice: 0
           };
-          console.log(this.selectedAlgoritm?.id);
-    }
-
-
-    onSelectAlgorithm() {
-        console.log(this.selectedAlgoritm.name);
     }
 
     onSegmentationStart(file: File) {
