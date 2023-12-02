@@ -1,3 +1,5 @@
+@import "../../../app.component.scss";
+
 $content-color: #E3F5FF;
 $primary-color: #7857FF;
 $border-radius: var(--16, 1rem);
@@ -14,13 +16,11 @@ $pickBtn-default-color: $primary-color;
   width: 100%;
 }
 
-.test-stvorec {
-  display: flex;
-  flex-direction: column;
-  height: 100%; // Výška štvorca
+.segmentation-results {
   display: flex; // Použitie flexboxu na centrálne umiestnenie
-  justify-content: center; // Centrovanie podľa osi X
-  align-items: center; // Centrovanie podľa osi Y
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
 }
 
 hr {
