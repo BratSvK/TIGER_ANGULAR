@@ -1,12 +1,17 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'SegmentationResultImg',
   templateUrl: './segmentation-result-img.component.html',
   styleUrl: './segmentation-result-img.component.scss'
 })
-export class SegmentationResultImgComponent  {
-  @Input() imageUrl: string;
+export class SegmentationResultImgComponent implements OnInit {
+  @Input() imageBase64: string | null;
 
   constructor() { }
+
+  ngOnInit(): void {
+    // this.loadImageUrl();
+  }
+  
 }

@@ -3,7 +3,7 @@ import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { faSquarePollVertical } from '@fortawesome/free-solid-svg-icons';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable, catchError, map, of } from 'rxjs';
-import { DetectionResult } from '../../../_models/personal-record.model';
+import { DetectionResult } from '../../../_models/detection-result.model';
 import { DetectionService } from '../../services/detection.service';
 import { SubSink } from 'subsink';
 import { ToastrService } from 'ngx-toastr';

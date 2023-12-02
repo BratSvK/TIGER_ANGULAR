@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faCloudUpload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,6 +8,7 @@ import { faCloudUpload } from '@fortawesome/free-solid-svg-icons';
 })
 export class ImageUploaderComponent {
   @Output() onUploadedTissue = new EventEmitter<File>();
+  @Input() isEnabled: boolean;
   cloudIcon = faCloudUpload;
 
   openFileInput() {

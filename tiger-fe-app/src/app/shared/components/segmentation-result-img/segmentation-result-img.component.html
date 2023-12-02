@@ -1,5 +1,5 @@
-<ng-container *ngIf="imageUrl; else noResult">
-    <div class="img-content" [style.backgroundImage]="imageUrl"></div>
+<ng-container *ngIf="imageBase64; else noResult">
+    <img class="img-content" [src]="imageBase64" alt="Obrázok">
 </ng-container>
 
 <ng-template #noResult>

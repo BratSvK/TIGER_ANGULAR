@@ -1,0 +1,7 @@
+from enum import Enum
+
+
+class SegmentationTypeAlgo(Enum):
+    CMeans = 1
+    FuzzyCMeans = 2
+    ThresholdBased = 3

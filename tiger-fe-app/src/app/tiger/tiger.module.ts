@@ -12,6 +12,7 @@ import { DetectionService } from '../detection/services/detection.service';
 import { FormsModule } from '@angular/forms';
 import { ConnectProcessComponent } from '../shared/components/connect-process/connect-process.component';
 import { SegmentationResultImgComponent } from '../shared/components/segmentation-result-img/segmentation-result-img.component';
+import { SegmentationService } from '../segmentation/services/segmentation.service';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SegmentationResultImgComponent } from '../shared/components/segmentatio
     ModalModule.forRoot()
   ],
   providers: [
-    DetectionService
+    DetectionService,
+    SegmentationService
   ]
 })
 export class TigerModule { }

@@ -26,7 +26,9 @@
                                 <div class="row mb-2"><span>DICE</span></div>
                                 <div *ngIf="loading; else content" class="loading-spinner"></div>
                                 <ng-template #content>
-                                    <div class="row text-center"><span>0 %</span></div>
+                                    <div class="row text-center">
+                                        <span>{{ segmentedResult.dice !== 0 ? segmentedResult.dice : '0' }}%</span>
+                                    </div>
                                 </ng-template>
                             </div>
                         </div>
@@ -39,7 +41,7 @@
             </div>
             <!-- Výber tkanina -->
             <div class="col-2">
-                <ImageUploader (onUploadedTissue)="onSegmentationStart($event)" />
+                <ImageUploader [isEnabled]="selectedAlgoritm?.id != undefined" (onUploadedTissue)="onSegmentationStart($event)" />
             </div>
             <div class="col">
                 <ConnectProcess />
@@ -48,11 +50,11 @@
             <div class="col-4">
                 <div class="segmentation-results">
                     <div class="row">
-                        <SegmentationResultImg />
+                        <SegmentationResultImg [imageBase64]="segmentedResult.segmentedPrediction"/>
                     </div>
                     <hr />
                     <div class="row">
-                        <SegmentationResultImg />
+                        <SegmentationResultImg [imageBase64]="segmentedResult.segmentedOrigin"/>
                     </div>
                 </div>
             </div>
