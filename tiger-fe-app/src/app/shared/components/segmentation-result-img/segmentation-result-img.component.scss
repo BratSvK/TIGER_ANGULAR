@@ -1,10 +1,23 @@
+$default-square: 15rem;
+
 .img-content {
-    background-color: blue; // Farba pozadia - červená
-    width: 15rem;
-    height: 15rem;
+    width: $default-square;
+    height: $default-square;
     flex-shrink: 0;
     border-radius: var(--16, 1rem);
     background-size: cover; /* Obrázok sa má prispôsobiť tak, aby pokryl celý štvorec bez deformácie */
     background-repeat: no-repeat; /* Obrázok sa nemá opakovať */
+  }
+
+
+  .no-result {
+    width: $default-square;
+    height: $default-square;
+    border-radius: var(--16, 1rem);
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed black;
   }
   

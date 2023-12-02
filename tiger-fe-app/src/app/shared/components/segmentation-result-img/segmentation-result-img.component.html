@@ -1,1 +1,9 @@
-<div class="img-content" [style.backgroundImage]="imageUrl"></div>
+<ng-container *ngIf="imageUrl; else noResult">
+    <div class="img-content" [style.backgroundImage]="imageUrl"></div>
+</ng-container>
+
+<ng-template #noResult>
+    <div class="no-result">
+        <span>Žiadne výsledky</span>
+    </div>
+</ng-template>
