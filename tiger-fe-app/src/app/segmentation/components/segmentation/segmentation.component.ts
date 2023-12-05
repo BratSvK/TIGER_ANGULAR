@@ -43,7 +43,8 @@ export class SegmentationComponent implements OnInit, OnDestroy  {
     onSegmentationStart(file: File) {
         console.log("Obrázok bol poslaný na segmentáciu: " + file.size);
         this.loading = true;
-        this.subs.sink = this.segmentService.getSegmentedTissue$(file, this.selectedAlgoritm.id).pipe(
+        this.subs.sink = this.segmentService.getSegmentedTissue$(file, this.selectedAlgoritm.id)
+        .pipe(
             map((result: SegmentationResult) => {
                 this.toastr.success('Segmentácia prebehla úspešne.');
                 this.segmentedResult = result;
