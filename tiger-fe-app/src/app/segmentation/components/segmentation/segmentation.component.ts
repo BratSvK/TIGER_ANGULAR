@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Algorithm } from '../../../_models/segmentation-selection.model';
 import { SegmentationResult, SegmentationTypeAlgo } from '../../../_models/segmentation-result.model';
 import { SegmentationService } from '../../services/segmentation.service';
-import { catchError, map, of, tap } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { SubSink } from 'subsink';
 
@@ -18,8 +18,7 @@ export class SegmentationComponent implements OnInit, OnDestroy  {
     segmentationAlgorithms: Algorithm[] = [
         new Algorithm(SegmentationTypeAlgo.CMeans, 'C-Means'),
         new Algorithm(SegmentationTypeAlgo.FuzzyCMeans, 'Fuzzy C-Means'),
-        new Algorithm(SegmentationTypeAlgo.ThresholdBased, 'Threshold-Based'),
-        new Algorithm(SegmentationTypeAlgo.ThresholdBased, 'VGG-16')
+        new Algorithm(SegmentationTypeAlgo.ThresholdBased, 'Threshold-Based')
     ];
     segmentedResult: SegmentationResult;
 
@@ -42,11 +41,9 @@ export class SegmentationComponent implements OnInit, OnDestroy  {
     }
 
     onSegmentationStart(file: File) {
-        console.log("Odoslane na API pred ");
         this.loading = true;
         this.subs.sink = this.segmentService.getSegmentedTissue$(file, this.selectedAlgoritm.id)
         .pipe(
-            tap(() => console.log("Odoslane na API")),
             map((result: SegmentationResult) => {
                 this.toastr.success('Segmentácia prebehla úspešne.');
                 this.segmentedResult = result;

@@ -8,6 +8,12 @@
   border-radius: 0.628rem;
   border: 2.512px dashed #5542F5;
   background: var(--white-100, #FFF);
+  cursor: pointer;
+  
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .image-uploader p {

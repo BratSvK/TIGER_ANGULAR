@@ -1,5 +1,5 @@
-<div class="image-uploader" (click)="isEnabled ? openFileInput() : null" [ngStyle]="isEnabled ? {'cursor' : 'pointer'} :  {'cursor': 'none'}">
-    <input id="fileInput" type="file" (change)="onFileSelected($event)" #fileInput style="display: none;" />
+<div class="image-uploader" (click)="isEnabled ? openFileInput() : null" [ngClass]="{'disabled': !isEnabled}">
+    <input id="fileInput" type="file" (change)="onFileSelected($event)" #fileInput style="display: none;"/>
     <div class="row">
       <fa-icon class="mb-2" [icon]="cloudIcon" size="2x"></fa-icon>
     </div>
