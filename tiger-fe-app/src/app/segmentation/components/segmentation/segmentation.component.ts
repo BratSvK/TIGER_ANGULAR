@@ -18,7 +18,8 @@ export class SegmentationComponent implements OnInit, OnDestroy  {
     segmentationAlgorithms: Algorithm[] = [
         new Algorithm(SegmentationTypeAlgo.CMeans, 'C-Means'),
         new Algorithm(SegmentationTypeAlgo.FuzzyCMeans, 'Fuzzy C-Means'),
-        new Algorithm(SegmentationTypeAlgo.ThresholdBased, 'Threshold-Based')
+        new Algorithm(SegmentationTypeAlgo.ThresholdBased, 'Threshold-Based'),
+        new Algorithm(SegmentationTypeAlgo.ThresholdBased, 'VGG-16')
     ];
     segmentedResult: SegmentationResult;
 
@@ -41,10 +42,11 @@ export class SegmentationComponent implements OnInit, OnDestroy  {
     }
 
     onSegmentationStart(file: File) {
-        console.log("Obrázok bol poslaný na segmentáciu: " + file.size);
+        console.log("Odoslane na API pred ");
         this.loading = true;
         this.subs.sink = this.segmentService.getSegmentedTissue$(file, this.selectedAlgoritm.id)
         .pipe(
+            tap(() => console.log("Odoslane na API")),
             map((result: SegmentationResult) => {
                 this.toastr.success('Segmentácia prebehla úspešne.');
                 this.segmentedResult = result;
