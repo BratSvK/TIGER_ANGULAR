@@ -6,6 +6,7 @@ from PIL import Image
 def process_image(path):
     try:
         img = Image.open(path)
+        img = img.resize((256, 256))
         img = img.convert('RGB')
         pixels = img.load()
     except IOError as err:

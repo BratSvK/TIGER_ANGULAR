@@ -13,6 +13,7 @@ def k_Means(path, K):
     
     try:
         img = cv.imread(path) #treba spravne nastavit cestu podla toho kde mate ulozene obrazky
+        img = cv.resize(img, (256, 256), interpolation = cv.INTER_AREA)
     except IOError as err:
         print('cannot open file' + err)
         sys.exit()

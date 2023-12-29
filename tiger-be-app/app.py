@@ -45,15 +45,13 @@ def runSegmentation():
     image_file = request.files['file']
     analyzer_value = int(request.form['analyzer'])
     type_analyzer = SegmentationTypeAlgo(analyzer_value)
-
-    prediction_path = f"predictions/{image_file.filename}"
+    image_name = image_file.filename
+    prediction_path = f"predictions/{image_name}"
     image_file.save(prediction_path)
 
-    # Spustenie segmentácie s obrázkom podľa typu algoritmu
-
-    segmented_origin_path = 'mock_images/mock-segmentation-origin.png'
+    segmented_origin_path = f"origins_prediction/{image_name}"
     segmented_origin_image = ImageHelper.LoadImageAndEncodeToBase64(segmented_origin_path)
-    cluster_numbers_predicted = predict_multiple(prediction_path);
+    cluster_numbers_predicted = predict_multiple(prediction_path)
     print(f"Predicted cluster: {cluster_numbers_predicted}")
     # run segmentation algo
     if type_analyzer == SegmentationTypeAlgo.CMeans:
@@ -68,7 +66,7 @@ def runSegmentation():
         print("Neznáma hodnota")
 
     segmented_prediction_image = ImageHelper.LoadImageAndEncodeToBase64(prediction_path)
-    dice_value = round(get_dice_score('predictions', 'mock_images'), 2) * 100
+    dice_value = round(get_dice_score('predictions', 'origins_prediction', image_name) * 100, 2)
 
     response_data = SegmentationResultDTO(
         segmented_origin=segmented_origin_image,
@@ -76,7 +74,7 @@ def runSegmentation():
         dice=dice_value
     )
 
-    return response_data.to_dict();
+    return response_data.to_dict()
 
 
 if __name__ == "__main__":
