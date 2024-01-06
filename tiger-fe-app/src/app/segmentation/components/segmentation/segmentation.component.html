@@ -41,7 +41,8 @@
             </div>
             <!-- Výber tkanina -->
             <div class="col-2">
-                <ImageUploader [isEnabled]="selectedAlgoritm?.id != undefined" (onUploadedTissue)="onSegmentationStart($event)" />
+                <ImageUploader [isEnabled]="selectedAlgoritm?.id != undefined"
+                    (onUploadedTissue)="onSegmentationStart($event)" />
             </div>
             <div class="col">
                 <ConnectProcess />
@@ -49,12 +50,24 @@
             <!-- Výsledky segmentácie -->
             <div class="col-4">
                 <div class="segmentation-results">
-                    <div class="row">
-                        <SegmentationResultImg [imageBase64]="segmentedResult.segmentedPrediction"/>
+                    <div class="results-wrapper d-flex align-items-center">
+                        <div class="col-md-2">
+                            <div class="vertical-text">Predikcia</div>
+                        </div>
+                        <div class="col-md-10">
+                            <SegmentationResultImg [imageBase64]="segmentedResult.segmentedPrediction" />
+                        </div>
                     </div>
                     <hr />
                     <div class="row">
-                        <SegmentationResultImg [imageBase64]="segmentedResult.segmentedOrigin"/>
+                        <div class="results-wrapper d-flex align-items-center">
+                            <div class="col-md-2">
+                                <div class="vertical-text">Originál</div>
+                            </div>
+                            <div class="col-md-10">
+                                <SegmentationResultImg [imageBase64]="segmentedResult.segmentedOrigin" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
