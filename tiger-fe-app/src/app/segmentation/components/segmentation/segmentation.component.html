@@ -5,13 +5,22 @@
             <div class="col-3">
                 <div class="algo-pick-content">
                     <div class="algo-description">
-                        <div class="row title">
+                        <div class="row align-items-center title">
+                            <div class="col-10">
                             <h5>Výber algoritmu</h5>
                         </div>
-                        <!-- PICK -->
+                        <div class="col-2">
+                            <fa-icon class="px-2" [icon]="infoIcon" size="2x" [tooltip]="popTemplate" placement="right"></fa-icon>
+                            <ng-template #popTemplate>
+                                <div [innerHTML]="tooltipText"></div>
+                            </ng-template>
+                        </div>
+                        </div>
+                        <!-- Segmnetation algo PICK -->
                         <div class="row pick">
                             <div class="col">
-                                <div class="form-check" *ngFor="let algorithm of segmentationAlgorithms">
+                                <div class="form-check" *ngFor="let algorithm of segmentationAlgorithms; let i = index">
+                                    <hr class="divider-algo" *ngIf="i === segmentationAlgorithms.length - 1">
                                     <input class="form-check-input" type="radio" name="segmentationAlgorithm"
                                         [id]="algorithm.id" [value]="algorithm" [(ngModel)]="selectedAlgoritm">
                                     <label class="form-check-label" [for]="algorithm.id">
@@ -20,8 +29,21 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- CNN algo PICK -->
+                        <div class="row pick">
+                            <div class="col" [class.disabled]="isCnnRequiredForPick()">
+                                <label class="mb-2">CNN sieť na predikciu K</label>
+                                <div class="form-check" *ngFor="let cnn of cnnAlgorithms">
+                                    <input class="form-check-input" type="radio" name="segmentationCnnAlgorithm"
+                                        [id]="cnn.id" [value]="cnn" [(ngModel)]="selectedCnnAlgoritm">
+                                    <label class="form-check-label" [for]="cnn.id">
+                                        {{ cnn.name }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                         <!-- DICE -->
-                        <div class="row mt-4 pick">
+                        <div class="row mt-2 pick">
                             <div class="dice-result">
                                 <div class="row mb-2"><span>DICE</span></div>
                                 <div *ngIf="loading; else content" class="loading-spinner"></div>
@@ -43,6 +65,10 @@
             <div class="col-2">
                 <ImageUploader [isEnabled]="selectedAlgoritm?.id != undefined"
                     (onUploadedTissue)="onSegmentationStart($event)" />
+                <div class="mt-4">
+                    <progressbar *ngIf="loading" [value]="progressValue" type="warning" [striped]="true">
+                        {{progressValue}}%</progressbar>
+                </div>
             </div>
             <div class="col">
                 <ConnectProcess />

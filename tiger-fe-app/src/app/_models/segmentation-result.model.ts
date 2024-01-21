@@ -5,6 +5,11 @@ export enum SegmentationTypeAlgo {
     VGG16 = 4
 }
 
+export enum CnnTypeAlgo {
+    VGG16 = 1,
+    Inception = 2
+}
+
 export interface SegmentationResult {
     segmentedOrigin: string | null;
     segmentedPrediction: string | null;

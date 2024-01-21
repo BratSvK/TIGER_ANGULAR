@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { ConnectProcessComponent } from '../shared/components/connect-process/connect-process.component';
 import { SegmentationResultImgComponent } from '../shared/components/segmentation-result-img/segmentation-result-img.component';
 import { SegmentationService } from '../segmentation/services/segmentation.service';
-
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { SegmentationService } from '../segmentation/services/segmentation.servi
     TigerRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ProgressbarModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   providers: [
     DetectionService,

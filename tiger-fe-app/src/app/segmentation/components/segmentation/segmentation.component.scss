@@ -33,11 +33,16 @@ $pickBtn-default-color: $primary-color;
   transform: rotate(180deg);
 }
 
-hr {
+.segmentation-results hr {
   width: 28.25006rem;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: 0.2rem dashed black;
   opacity: 1;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
 }
 
 .algo-pick-content {
@@ -56,6 +61,11 @@ hr {
     border-radius: $border-radius;
     background: $background-box;
 
+    .divider-algo {
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      border: 0.15rem dashed black;
+      opacity: 1;
+    }
 
     .form-check-input {
       background-color: $pickBtn-default-color;
@@ -71,7 +81,7 @@ hr {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4rem;
+    gap: 1rem;
     margin: 2rem;
     color: white;
 
