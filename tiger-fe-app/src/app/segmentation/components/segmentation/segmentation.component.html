@@ -66,7 +66,7 @@
                 <ImageUploader [isEnabled]="selectedAlgoritm?.id != undefined"
                     (onUploadedTissue)="onSegmentationStart($event)" />
                 <div class="mt-4">
-                    <progressbar *ngIf="loading" [value]="progressValue" type="warning" [striped]="true">
+                    <progressbar *ngIf="loading" [value]="progressValue" type="danger" [striped]="true">
                         {{progressValue}}%</progressbar>
                 </div>
             </div>
