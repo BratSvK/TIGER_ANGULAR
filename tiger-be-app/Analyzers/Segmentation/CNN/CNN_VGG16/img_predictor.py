@@ -43,6 +43,16 @@ def predict_binary():
 
 
 def predict_multiple(path):
+    """
+    This function is likely used to make multiple predictions on a set of data.
+
+    Parameters:
+    input_path (str): The path to the input data file.
+
+    Returns:
+    list: A list of predicted values or clusters for the input data.
+    """
+    
     img = image.load_img(path, target_size=(224, 224))
     img = np.asarray(img)
     #plt.imshow(img)
@@ -53,8 +63,8 @@ def predict_multiple(path):
     output = smodel.predict(img)
     # Map the predicted classes to 1, 2, or 3 clusters
     pred_cluster = np.argmax(output) + 1
+    print(f"Predicted cluster: {pred_cluster}")
     return pred_cluster
-    #print(f"Predicted cluster: {pred_cluster}")
 
 
 

@@ -51,17 +51,15 @@ def runSegmentation():
 
     segmented_origin_path = f"origins_prediction/{image_name}"
     segmented_origin_image = ImageHelper.LoadImageAndEncodeToBase64(segmented_origin_path)
-    cluster_numbers_predicted = predict_multiple(prediction_path)
-    print(f"Predicted cluster: {cluster_numbers_predicted}")
     # run segmentation algo
     if type_analyzer == SegmentationTypeAlgo.CMeans:
+        cluster_numbers_predicted = predict_multiple(prediction_path)
         k_Means(prediction_path, cluster_numbers_predicted)
     elif type_analyzer == SegmentationTypeAlgo.FuzzyCMeans:
+        cluster_numbers_predicted = predict_multiple(prediction_path)
         FCM_INIT(prediction_path, cluster_numbers_predicted, cluster_numbers_predicted + 1)
     elif type_analyzer == SegmentationTypeAlgo.ThresholdBased:
         process_image(prediction_path)
-    elif type_analyzer == SegmentationTypeAlgo.VGG16:
-        predict_multiple(prediction_path)
     else:
         print("Neznáma hodnota")
 
