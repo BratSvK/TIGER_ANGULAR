@@ -9,6 +9,7 @@ import { faCloudUpload } from '@fortawesome/free-solid-svg-icons';
 export class ImageUploaderComponent {
   @Output() onUploadedTissue = new EventEmitter<File>();
   @Input() isEnabled: boolean;
+  @Input() title: string;
   @ViewChild('fileInput') fileInput: ElementRef;
   cloudIcon = faCloudUpload;
 

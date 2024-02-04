@@ -15,6 +15,7 @@ import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 export class SegmentationComponent implements OnInit, OnDestroy  {
     private subs = new SubSink();
 
+    eficientUnet: Algorithm = new Algorithm(SegmentationTypeAlgo.UNET, 'Efficient Unet');
     segmentationAlgorithms: Algorithm[] = [
         new Algorithm(SegmentationTypeAlgo.CMeans, 'C-Means'),
         new Algorithm(SegmentationTypeAlgo.FuzzyCMeans, 'Fuzzy C-Means'),
@@ -32,7 +33,7 @@ export class SegmentationComponent implements OnInit, OnDestroy  {
     selectedCnnAlgoritm: Algorithm;
     segmentedResult: SegmentationResult;
     tooltipText: string = 
-        `Máte na výber tri algoritmy: <br> <b>C-Means</b>, <b>Fuzzy C-Means</b> a <b>Threshold-Based </b>.
+        `Máte na výber tri algoritmy: <br> <b>C-Means</b>, <b>Fuzzy C-Means</b>, <b>Threshold-Based </b> a <b>Efficient U-Net</b> neuronovú sieť.
          <br>Pri prvých dvoch je potrebné definovať počet zhlukov <b>'K'</b>.`;
 
     constructor(
@@ -53,11 +54,11 @@ export class SegmentationComponent implements OnInit, OnDestroy  {
     }
 
     onSegmentationStart(file: File) {
-        this.progressValue = 30;
-        const timer$ = interval(1000)
+        this.progressValue = 10;
+        const timer$ = interval(1500)
         .pipe(
             tap(() => this.progressValue += 10),
-            takeWhile(() => this.progressValue <= 100)
+            takeWhile(() => this.progressValue < 90)
         ).subscribe();
 
         this.loading = true;
@@ -65,10 +66,10 @@ export class SegmentationComponent implements OnInit, OnDestroy  {
         .pipe(
             map((result: SegmentationResult) => {
                 timer$.unsubscribe(); // stop the timer
+                this.progressValue = 100;
                 this.toastr.success('Segmentácia prebehla úspešne.');
                 this.segmentedResult = result;
                 this.loading = false;
-                this.progressValue = 100;
             }),
             catchError((error) => {
               timer$.unsubscribe(); // stop the timer

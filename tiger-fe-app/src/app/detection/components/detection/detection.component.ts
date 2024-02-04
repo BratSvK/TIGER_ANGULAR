@@ -1,8 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
-import { faSquarePollVertical } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap, faSquarePollVertical } from '@fortawesome/free-solid-svg-icons';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { Observable, catchError, map, of } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
 import { DetectionResult } from '../../../_models/detection-result.model';
 import { DetectionService } from '../../services/detection.service';
 import { SubSink } from 'subsink';
@@ -16,11 +16,14 @@ import { ToastrService } from 'ngx-toastr';
 export class DetectionComponent implements OnInit {
     clockIcon = faClock;
     resultIcon = faSquarePollVertical;
+    studyIcon = faGraduationCap;
     modalRef: BsModalRef;
     detectionResult: DetectionResult;
-    mockResult: DetectionResult =  { tils: 0 };
+    mockResult: DetectionResult =  { tils: 0, detectionOrigin: null, detectionPrediction: null, lymCount: 0, executionTime: 0 };
     private subs = new SubSink();
     loading: boolean = false;
+    default_img: string = '../../../../assets/waiting_image.png';
+    default_tils: string = '../../../../assets/tils_info.png';
 
     constructor(
         private modalService: BsModalService, 
@@ -36,6 +39,17 @@ export class DetectionComponent implements OnInit {
         this.subs.unsubscribe();
       }
     
+    doctorAdvanceMessage() {
+        if (this.detectionResult.tils > 0 && this.detectionResult.tils <= 10) {
+            return 'Nádor so žiadnymi / minimálnymi imunitnými bunkami';
+        } else if (this.detectionResult.tils > 10 && this.detectionResult.tils <= 40) {
+            return 'Nádor so stredným / heterogénnym infiltrátom';
+        } else if (this.detectionResult.tils > 40 && this.detectionResult.tils <= 90) {
+            return 'Nádor s vysokým imunitným infiltrátom';
+        } else {
+            return 'Čaká sa na výsledok...';
+        }
+    }
 
     public sentTissueForScan(file: File) {
         console.log("Obrázok bol poslaný na scanning: " + file.size);

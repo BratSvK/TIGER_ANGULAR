@@ -1,3 +1,7 @@
 export interface DetectionResult {
-    tils: number
+    detectionOrigin: string | null;
+    detectionPrediction: string | null;
+    tils: number;
+    lymCount: number;
+    executionTime: number;
 }

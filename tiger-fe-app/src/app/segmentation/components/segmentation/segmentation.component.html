@@ -7,14 +7,28 @@
                     <div class="algo-description">
                         <div class="row align-items-center title">
                             <div class="col-10">
-                            <h5>Výber algoritmu</h5>
+                                <h5>Výber algoritmu</h5>
+                            </div>
+                            <div class="col-2">
+                                <fa-icon class="px-2" [icon]="infoIcon" size="2x" [tooltip]="popTemplate"
+                                    placement="right"></fa-icon>
+                                <ng-template #popTemplate>
+                                    <div [innerHTML]="tooltipText"></div>
+                                </ng-template>
+                            </div>
                         </div>
-                        <div class="col-2">
-                            <fa-icon class="px-2" [icon]="infoIcon" size="2x" [tooltip]="popTemplate" placement="right"></fa-icon>
-                            <ng-template #popTemplate>
-                                <div [innerHTML]="tooltipText"></div>
-                            </ng-template>
-                        </div>
+                        <!-- CNN UNET algo PICK -->
+                        <div class="row pick">
+                            <div class="col">
+                                <label class="mb-2">CNN sieť</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="segmentationCnnAlgorithm"
+                                        [id]="eficientUnet.id" [value]="eficientUnet" [(ngModel)]="selectedAlgoritm">
+                                    <label class="form-check-label" [for]="eficientUnet.id">
+                                        {{ eficientUnet.name }}
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                         <!-- Segmnetation algo PICK -->
                         <div class="row pick">
@@ -42,18 +56,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- DICE -->
-                        <div class="row mt-2 pick">
-                            <div class="dice-result">
-                                <div class="row mb-2"><span>DICE</span></div>
-                                <div *ngIf="loading; else content" class="loading-spinner"></div>
-                                <ng-template #content>
-                                    <div class="row text-center">
-                                        <span>{{ segmentedResult.dice !== 0 ? segmentedResult.dice : '0' }}%</span>
-                                    </div>
-                                </ng-template>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -62,12 +64,24 @@
                 <ConnectProcess />
             </div>
             <!-- Výber tkanina -->
-            <div class="col-2">
-                <ImageUploader [isEnabled]="selectedAlgoritm?.id != undefined"
+            <!-- DICE -->
+            <div class="col-2 dice-box">
+                <ImageUploader [isEnabled]="selectedAlgoritm?.id != undefined" [title]="'segmentácia'"
                     (onUploadedTissue)="onSegmentationStart($event)" />
-                <div class="mt-4">
                     <progressbar *ngIf="loading" [value]="progressValue" type="danger" [striped]="true">
                         {{progressValue}}%</progressbar>
+                <div class="mt-4">
+                    <div class="row mt-2">
+                        <div class="dice-result">
+                            <div class="row mb-2"><span>DICE</span></div>
+                            <div *ngIf="loading; else content" class="loading-spinner"></div>
+                            <ng-template #content>
+                                <div class="row text-center">
+                                    <span>{{ segmentedResult.dice !== 0 ? segmentedResult.dice : '0' }}%</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col">
